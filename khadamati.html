@@ -18,12 +18,12 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Vazirmatn', 'Segoe UI', Tahoma, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
             background: linear-gradient(135deg, var(--dark) 0%, #111827 100%);
-            color: var(--light);
+            color: white;
             min-height: 100vh;
         }
         
@@ -36,7 +36,6 @@
         /* نوار ناوبری */
         .navbar {
             background: rgba(31, 41, 55, 0.95);
-            backdrop-filter: blur(20px);
             padding: 15px 0;
             position: fixed;
             width: 100%;
@@ -54,7 +53,7 @@
         .logo {
             font-size: 2.2em;
             font-weight: bold;
-            color: var(--light);
+            color: white;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -71,7 +70,7 @@
         }
         
         .nav-link {
-            color: var(--light);
+            color: white;
             text-decoration: none;
             padding: 12px 20px;
             border-radius: 25px;
@@ -84,7 +83,6 @@
         
         .nav-link:hover {
             background: var(--primary);
-            transform: translateY(-2px);
         }
         
         .nav-link.active {
@@ -105,9 +103,7 @@
         .page-header h1 {
             font-size: 3.5em;
             margin-bottom: 20px;
-            background: linear-gradient(45deg, var(--light), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--accent);
         }
         
         .page-header p {
@@ -135,11 +131,9 @@
             border-radius: 20px;
             padding: 40px 30px;
             text-align: center;
-            backdrop-filter: blur(10px);
             border: 1px solid rgba(220, 38, 38, 0.3);
             transition: all 0.3s;
             position: relative;
-            overflow: hidden;
         }
         
         .service-card::before {
@@ -155,7 +149,6 @@
         .service-card:hover {
             transform: translateY(-10px);
             background: rgba(255, 255, 255, 0.12);
-            border-color: var(--primary);
         }
         
         .service-icon {
@@ -168,6 +161,7 @@
             justify-content: center;
             margin: 0 auto 25px;
             font-size: 2em;
+            color: white;
         }
         
         .service-card h3 {
@@ -185,6 +179,7 @@
         .features-list {
             text-align: right;
             margin: 20px 0;
+            list-style: none;
         }
         
         .features-list li {
@@ -219,20 +214,8 @@
         
         .btn:hover {
             transform: scale(1.05);
-            box-shadow: 0 10px 30px rgba(220, 38, 38, 0.4);
         }
         
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--primary);
-            color: var(--primary);
-        }
-        
-        .btn-outline:hover {
-            background: var(--primary);
-            color: white;
-        }
-
         /* دکمه‌های ارتباطی */
         .contact-buttons {
             display: flex;
@@ -258,7 +241,6 @@
         .telegram-btn:hover {
             background: #0077b5;
             transform: scale(1.05);
-            box-shadow: 0 5px 20px rgba(0, 136, 204, 0.4);
         }
         
         .eitaa-btn {
@@ -277,7 +259,6 @@
         .eitaa-btn:hover {
             background: #E55A2B;
             transform: scale(1.05);
-            box-shadow: 0 5px 20px rgba(255, 107, 53, 0.4);
         }
         
         .whatsapp-btn {
@@ -296,7 +277,6 @@
         .whatsapp-btn:hover {
             background: #128C7E;
             transform: scale(1.05);
-            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
         }
         
         /* فوتر */
@@ -492,69 +472,6 @@
                             خرید آنلاین
                         </a>
                     </div>
-
-                    <!-- خدمات ۴ -->
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-home"></i>
-                        </div>
-                        <h3>بیمه مسکن</h3>
-                        <p>محافظت از خانه و دارایی‌های شما</p>
-                        
-                        <ul class="features-list">
-                            <li><i class="fas fa-check"></i> پوشش آتش‌سوزی</li>
-                            <li><i class="fas fa-check"></i> پوشش زلزله</li>
-                            <li><i class="fas fa-check"></i> پوشش سیل</li>
-                            <li><i class="fas fa-check"></i> پوشش سرقت</li>
-                        </ul>
-                        
-                        <a href="gheymat.html" class="btn">
-                            <i class="fas fa-shopping-cart"></i>
-                            خرید آنلاین
-                        </a>
-                    </div>
-
-                    <!-- خدمات ۵ -->
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-heartbeat"></i>
-                        </div>
-                        <h3>بیمه درمان</h3>
-                        <p>پوشش کامل هزینه‌های درمانی و پزشکی</p>
-                        
-                        <ul class="features-list">
-                            <li><i class="fas fa-check"></i> پوشش بستری</li>
-                            <li><i class="fas fa-check"></i> پوشش جراحی</li>
-                            <li><i class="fas fa-check"></i> پوشش دندانپزشکی</li>
-                            <li><i class="fas fa-check"></i> پوشش دارو</li>
-                        </ul>
-                        
-                        <a href="gheymat.html" class="btn">
-                            <i class="fas fa-shopping-cart"></i>
-                            خرید آنلاین
-                        </a>
-                    </div>
-
-                    <!-- خدمات ۶ -->
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-plane"></i>
-                        </div>
-                        <h3>بیمه مسافرتی</h3>
-                        <p>آرامش در سفرهای داخلی و خارجی</p>
-                        
-                        <ul class="features-list">
-                            <li><i class="fas fa-check"></i> پوشش درمانی</li>
-                            <li><i class="fas fa-check"></i> پوشش حوادث</li>
-                            <li><i class="fas fa-check"></i> پوشش baggage</li>
-                            <li><i class="fas fa-check"></i> پوشش لغو سفر</li>
-                        </ul>
-                        
-                        <a href="gheymat.html" class="btn">
-                            <i class="fas fa-shopping-cart"></i>
-                            خرید آنلاین
-                        </a>
-                    </div>
                 </div>
             </section>
         </div>
@@ -568,11 +485,11 @@
                     <h3>بیمه شهر</h3>
                     <p>همراه مطمئن شما در مسیر آرامش و امنیت</p>
                     <div class="social-contact">
-                        <a href="https://t.me/09224015405" class="telegram-btn" target="_blank" style="padding: 8px 15px;">
+                        <a href="https://t.me/09224015405" class="telegram-btn" target="_blank">
                             <i class="fab fa-telegram"></i>
                             تلگرام
                         </a>
-                        <a href="https://eitaa.com/09224015405" class="eitaa-btn" target="_blank" style="padding: 8px 15px;">
+                        <a href="https://eitaa.com/09224015405" class="eitaa-btn" target="_blank">
                             <i class="fas fa-comment-alt"></i>
                             ایتا
                         </a>
@@ -610,7 +527,6 @@
                     <h3>ساعات کاری</h3>
                     <p>هر روز از ساعت ۱۰:۰۰ صبح تا ۲۱:۰۰ شب</p>
                     <p>پاسخگویی ۲۴ ساعته در پیام‌رسان‌ها</p>
-                    <p>پشتیبانی آنلاین</p>
                 </div>
             </div>
 
@@ -619,17 +535,5 @@
             </div>
         </div>
     </footer>
-
-    <script>
-        // اسکرول نرم
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
 </body>
 </html>
