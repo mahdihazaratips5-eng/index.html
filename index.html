@@ -153,6 +153,28 @@
             background: var(--primary);
             color: white;
         }
+
+        /* دکمه واتساپ */
+        .whatsapp-btn {
+            background: #25D366;
+            color: white;
+            padding: 16px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin: 10px;
+            font-size: 1.1em;
+        }
+        
+        .whatsapp-btn:hover {
+            background: #128C7E;
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+        }
         
         /* خدمات */
         .services {
@@ -286,6 +308,24 @@
             color: rgba(255, 255, 255, 0.7);
         }
         
+        .whatsapp-contact {
+            background: #25D366;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 10px;
+            transition: all 0.3s;
+        }
+        
+        .whatsapp-contact:hover {
+            background: #128C7E;
+            transform: scale(1.05);
+        }
+        
         .copyright {
             text-align: center;
             padding-top: 30px;
@@ -344,9 +384,9 @@
                         <i class="fas fa-rocket"></i>
                         مشاهده خدمات
                     </a>
-                    <a href="gheymat.html" class="btn btn-outline">
-                        <i class="fas fa-bolt"></i>
-                        استعلام قیمت
+                    <a href="https://wa.me/989224015405" class="whatsapp-btn" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                        ارتباط در واتساپ
                     </a>
                 </div>
             </section>
@@ -410,6 +450,10 @@
                 <div class="footer-section">
                     <h3>بیمه شهر</h3>
                     <p>ما با بیش از یک دهه تجربه در صنعت بیمه، همراه مطمئن شما در مسیر آرامش و امنیت هستیم.</p>
+                    <a href="https://wa.me/989224015405" class="whatsapp-contact" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                        ارتباط در واتساپ
+                    </a>
                 </div>
 
                 <!-- لینک‌های سریع -->
@@ -429,7 +473,7 @@
                     <h3>تماس با ما</h3>
                     <div class="contact-info">
                         <i class="fas fa-phone"></i>
-                        <span>۰۲۱-۱۲۳۴۵۶۷۸</span>
+                        <span>۰۹۲۲۴۰۱۵۴۰۵</span>
                     </div>
                     <div class="contact-info">
                         <i class="fas fa-envelope"></i>
@@ -437,8 +481,12 @@
                     </div>
                     <div class="contact-info">
                         <i class="fas fa-map-marker-alt"></i>
-                        <span>تهران، خیابان ولیعصر</span>
+                        <span>تهران قرچک، خیابان محمد آباد مهدیه ۲۱ پلاک ۱۰</span>
                     </div>
+                    <a href="https://wa.me/989224015405" class="whatsapp-contact" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                        گفتگو در واتساپ
+                    </a>
                 </div>
 
                 <!-- ساعات کاری -->
@@ -478,4 +526,4 @@
         });
     </script>
 </body>
-              </html>
+</html>
