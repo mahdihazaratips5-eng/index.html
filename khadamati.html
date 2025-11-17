@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>خدمات بیمه‌ای - بیمه شهر</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #1d4ed8;
+            --accent: #f59e0b;
+            --dark: #1e293b;
+            --light: #f8fafc;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Vazirmatn', 'Segoe UI', Tahoma, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--dark) 0%, #0f172a 100%);
+            color: var(--light);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* نوار ناوبری */
+        .navbar {
+            background: rgba(30, 41, 59, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid var(--primary);
+        }
+        
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 2.2em;
+            font-weight: bold;
+            color: var(--light);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo span {
+            color: var(--accent);
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 5px;
+        }
+        
+        .nav-link {
+            color: var(--light);
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            transition: all 0.3s;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .nav-link:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+        }
+        
+        .nav-link.active {
+            background: var(--primary);
+        }
+        
+        /* محتوای اصلی */
+        .main-content {
+            margin-top: 80px;
+            padding: 80px 0;
+        }
+        
+        .page-header {
+            text-align: center;
+            padding: 60px 0;
+        }
+        
+        .page-header h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, var(--light), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .page-header p {
+            font-size: 1.3em;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+        
+        /* خدمات جامع */
+        .services-comprehensive {
+            padding: 60px 0;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .service-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.08);
+        }
+        
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 2em;
+        }
+        
+        .service-card h3 {
+            font-size: 1.6em;
+            margin-bottom: 15px;
+            color: var(--accent);
+        }
+        
+        .service-card p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        
+        .features-list {
+            text-align: right;
+            margin: 20px 0;
+        }
+        
+        .features-list li {
+            margin-bottom: 10px;
+            color: rgba(255, 255, 255, 0.8);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .features-list i {
+            color: var(--accent);
+        }
+        
+        /* دکمه‌ها */
+        .btn {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 16px 40px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s;
+            margin: 10px;
+        }
+        
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.4);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* فوتر */
+        footer {
+            background: rgba(15, 23, 42, 0.95);
+            padding: 60px 0 30px;
+            margin-top: 80px;
+            border-top: 2px solid var(--primary);
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section h3 {
+            color: var(--accent);
+            margin-bottom: 20px;
+            font-size: 1.4em;
+        }
+        
+        .footer-section p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+        
+        .contact-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <!-- نوار ناوبری -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">
+                    <i class="fas fa-city"></i>
+                    بیمه<span>شهر</span>
+                </div>
+                
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link"><i class="fas fa-home"></i> خانه</a></li>
+                    <li><a href="khadamati.html" class="nav-link active"><i class="fas fa-list"></i> خدمات</a></li>
+                    <li><a href="gheymat.html" class="nav-link"><i class="fas fa-tags"></i> قیمت‌ها</a></li>
+                    <li><a href="darbare-ma.html" class="nav-link"><i class="fas fa-info-circle"></i> درباره ما</a></li>
+                    <li><a href="tamas.html" class="nav-link"><i class="fas fa-phone"></i> تماس</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- محتوای اصلی -->
+    <div class="main-content">
+        <div class="container">
+            <!-- هدر صفحه -->
+            <section class="page-header">
+                <h1>خدمات بیمه‌ای ما</h1>
+                <p>با گسترده‌ترین مجموعه خدمات بیمه‌ای در ایران، تمام نیازهای بیمه‌ای شما را پوشش می‌دهیم</p>
+            </section>
+
+            <!-- خدمات جامع -->
+            <section class="services-comprehensive">
+                <div class="services-grid">
+                    <!-- خدمات ۱ -->
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-car"></i>
+                        </div>
+                        <h3>بیمه شخص ثالث</h3>
+                        <p>پوشش کامل مسئولیت مدنی در مقابل اشخاص ثالث با بهترین شرایط</p>
+                        
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> پوشش خسارت جانی</li>
+                            <li><i class="fas fa-check"></i> پوشش خسارت مالی</li>
+                            <li><i class="fas fa-check"></i> پوشش هزینه‌های درمانی</li>
+                            <li><i class="fas fa-check"></i> خدمات ۲۴ ساعته</li>
+                        </ul>
+                        
+                        <a href="gheymat.html" class="btn">
+                            <i class="fas fa-shopping-cart"></i>
+                            خرید آنلاین
+                        </a>
+                    </div>
+
+                    <!-- خدمات ۲ -->
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-car-crash"></i>
+                        </div>
+                        <h3>بیمه بدنه</h3>
+                        <p>محافظت کامل از خودروی شما در برابر انواع خسارات</p>
+                        
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> پوشش تصادفات</li>
+                            <li><i class="fas fa-check"></i> پوشش سرقت</li>
+                            <li><i class="fas fa-check"></i> پوشش آتش‌سوزی</li>
+                            <li><i class="fas fa-check"></i> پوشش بلایای طبیعی</li>
+                        </ul>
+                        
+                        <a href="gheymat.html" class="btn">
+                            <i class="fas fa-shopping-cart"></i>
+                            خرید آنلاین
+                        </a>
+                    </div>
+
+                    <!-- خدمات ۳ -->
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-motorcycle"></i>
+                        </div>
+                        <h3>بیمه موتورسیکلت</h3>
+                        <p>پوشش کامل برای رانندگان موتورسیکلت</p>
+                        
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> پوشش شخص ثالث</li>
+                            <li><i class="fas fa-check"></i> پوشش بدنه</li>
+                            <li><i class="fas fa-check"></i> پوشش سرنشین</li>
+                            <li><i class="fas fa-check"></i> پوشش تجهیزات</li>
+                        </ul>
+                        
+                        <a href="gheymat.html" class="btn">
+                            <i class="fas fa-shopping-cart"></i>
+                            خرید آنلاین
+                        </a>
+                    </div>
+
+                    <!-- خدمات ۴ -->
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <h3>بیمه مسکن</h3>
+                        <p>محافظت از خانه و دارایی‌های شما</p>
+                        
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> پوشش آتش‌سوزی</li>
+                            <li><i class="fas fa-check"></i> پوشش زلزله</li>
+                            <li><i class="fas fa-check"></i> پوشش سیل</li>
+                            <li><i class="fas fa-check"></i> پوشش سرقت</li>
+                        </ul>
+                        
+                        <a href="gheymat.html" class="btn">
+                            <i class="fas fa-shopping-cart"></i>
+                            خرید آنلاین
+                        </a>
+                    </div>
+
+                    <!-- خدمات ۵ -->
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <h3>بیمه درمان</h3>
+                        <p>پوشش کامل هزینه‌های درمانی و پزشکی</p>
+                        
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> پوشش بستری</li>
+                            <li><i class="fas fa-check"></i> پوشش جراحی</li>
+                            <li><i class="fas fa-check"></i> پوشش دندانپزشکی</li>
+                            <li><i class="fas fa-check"></i> پوشش دارو</li>
+                        </ul>
+                        
+                        <a href="gheymat.html" class="btn">
+                            <i class="fas fa-shopping-cart"></i>
+                            خرید آنلاین
+                        </a>
+                    </div>
+
+                    <!-- خدمات ۶ -->
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-plane"></i>
+                        </div>
+                        <h3>بیمه مسافرتی</h3>
+                        <p>آرامش در سفرهای داخلی و خارجی</p>
+                        
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> پوشش درمانی</li>
+                            <li><i class="fas fa-check"></i> پوشش حوادث</li>
+                            <li><i class="fas fa-check"></i> پوشش baggage</li>
+                            <li><i class="fas fa-check"></i> پوشش لغو سفر</li>
+                        </ul>
+                        
+                        <a href="gheymat.html" class="btn">
+                            <i class="fas fa-shopping-cart"></i>
+                            خرید آنلاین
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- فوتر -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>بیمه شهر</h3>
+                    <p>همراه مطمئن شما در مسیر آرامش و امنیت</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>لینک‌های سریع</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="fas fa-arrow-left"></i> خانه</a></li>
+                        <li><a href="khadamati.html"><i class="fas fa-arrow-left"></i> خدمات بیمه‌ای</a></li>
+                        <li><a href="gheymat.html"><i class="fas fa-arrow-left"></i> قیمت‌ها</a></li>
+                        <li><a href="darbare-ma.html"><i class="fas fa-arrow-left"></i> درباره ما</a></li>
+                        <li><a href="tamas.html"><i class="fas fa-arrow-left"></i> تماس با ما</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>تماس با ما</h3>
+                    <div class="contact-info">
+                        <i class="fas fa-phone"></i>
+                        <span>۰۲۱-۱۲۳۴۵۶۷۸</span>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-envelope"></i>
+                        <span>info@bimeshahr.com</span>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>تهران، خیابان ولیعصر</span>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3>ساعات کاری</h3>
+                    <p>شنبه - چهارشنبه: ۸:۰۰ - ۱۷:۰۰</p>
+                    <p>پنجشنبه: ۸:۰۰ - ۱۴:۰۰</p>
+                    <p>جمعه: تعطیل</p>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>© ۱۴۰۳ - بیمه شهر. کلیه حقوق محفوظ است.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // اسکرول نرم
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+  </html>
