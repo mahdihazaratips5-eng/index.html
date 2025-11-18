@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>خدمات بیمه - بیمه شهر</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0066ff;
+            --primary-dark: #0052d4;
+            --secondary: #00c6ff;
+            --accent: #7e3af2;
+            --dark: #1a1a2e;
+            --darker: #0f0f1a;
+            --light: #f8fafc;
+            --gradient: linear-gradient(135deg, #0066ff 0%, #00c6ff 100%);
+            --gradient-dark: linear-gradient(135deg, #0052d4 0%, #0099cc 100%);
+            --neon-glow: 0 0 10px rgba(0, 102, 255, 0.7), 0 0 20px rgba(0, 102, 255, 0.5), 0 0 30px rgba(0, 102, 255, 0.3);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Vazirmatn', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--darker);
+            color: var(--light);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* هدر و ناوبری */
+        header {
+            background: rgba(10, 10, 20, 0.95);
+            backdrop-filter: blur(15px);
+            color: white;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 2rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: var(--neon-glow);
+            text-decoration: none;
+        }
+
+        .logo i {
+            font-size: 2.8rem;
+            animation: pulse 3s infinite;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 50px;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 10px 0;
+        }
+
+        .nav-link:hover {
+            color: var(--secondary);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 3px;
+            background: var(--gradient);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* بخش هیرو صفحه خدمات */
+        .page-hero {
+            background: linear-gradient(rgba(10, 10, 20, 0.9), rgba(10, 10, 20, 0.95)), 
+                        radial-gradient(circle at 30% 70%, rgba(0, 102, 255, 0.2) 0%, transparent 50%);
+            padding: 180px 0 100px;
+            text-align: center;
+            position: relative;
+        }
+
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+        }
+
+        .breadcrumb a {
+            color: var(--secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .breadcrumb a:hover {
+            color: white;
+        }
+
+        .breadcrumb span {
+            color: #a0aec0;
+        }
+
+        .page-hero h1 {
+            font-size: 4rem;
+            margin-bottom: 25px;
+            background: linear-gradient(135deg, #fff 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 800;
+        }
+
+        .page-hero p {
+            font-size: 1.4rem;
+            color: #a0aec0;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* بخش جزئیات خدمات */
+        .service-details {
+            padding: 100px 0;
+            background: var(--dark);
+        }
+
+        .details-container {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 60px;
+        }
+
+        .service-content {
+            background: linear-gradient(145deg, rgba(40, 40, 60, 0.8), rgba(25, 25, 40, 0.9));
+            border-radius: 25px;
+            padding: 50px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .service-header {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .service-icon-large {
+            width: 120px;
+            height: 120px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            box-shadow: 0 15px 30px rgba(0, 102, 255, 0.4);
+        }
+
+        .service-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .service-title p {
+            color: #a0aec0;
+            font-size: 1.2rem;
+        }
+
+        .service-description {
+            margin-bottom: 50px;
+        }
+
+        .service-description h3 {
+            font-size: 2rem;
+            margin-bottom: 25px;
+            color: white;
+            position: relative;
+            padding-right: 20px;
+        }
+
+        .service-description h3::before {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 10px;
+            height: 10px;
+            background: var(--secondary);
+            border-radius: 50%;
+        }
+
+        .service-description p {
+            color: #cbd5e0;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(0, 102, 255, 0.3);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            margin: 0 auto 20px;
+        }
+
+        .feature-card h4 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .feature-card p {
+            color: #a0aec0;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* سایدبار */
+        .service-sidebar {
+            position: sticky;
+            top: 120px;
+            height: fit-content;
+        }
+
+        .sidebar-card {
+            background: linear-gradient(145deg, rgba(40, 40, 60, 0.8), rgba(25, 25, 40, 0.9));
+            border-radius: 25px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            margin-bottom: 30px;
+        }
+
+        .sidebar-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 25px;
+            color: white;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .sidebar-card h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--gradient);
+        }
+
+        .contact-widget .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 20px;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(-10px);
+        }
+
+        .contact-item i {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.3rem;
+        }
+
+        .contact-text h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: white;
+        }
+
+        .contact-text p {
+            color: #a0aec0;
+            font-size: 1rem;
+        }
+
+        .phone-highlight {
+            background: var(--gradient);
+            color: white;
+            font-weight: 700;
+            font-size: 1.3rem;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .phone-highlight:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 102, 255, 0.4);
+        }
+
+        /* بخش سوالات متداول */
+        .faq-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
+        }
+
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: linear-gradient(145deg, rgba(40, 40, 60, 0.8), rgba(25, 25, 40, 0.9));
+            border-radius: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 30px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .faq-question h4 {
+            font-size: 1.3rem;
+            color: white;
+            margin: 0;
+        }
+
+        .faq-icon {
+            color: var(--secondary);
+            font-size: 1.3rem;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-answer {
+            padding: 0 30px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            color: #cbd5e0;
+            line-height: 1.7;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 30px 30px;
+            max-height: 500px;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        /* CTA بخش */
+        .cta-section {
+            padding: 100px 0;
+            background: var(--gradient);
+            text-align: center;
+            position: relative;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-content h2 {
+            font-size: 3rem;
+            margin-bottom: 25px;
+            color: white;
+        }
+
+        .cta-content p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 20px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button.primary {
+            background: white;
+            color: var(--primary);
+        }
+
+        .cta-button.primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .cta-button.secondary:hover {
+            background: white;
+            color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        /* فوتر */
+        footer {
+            background: var(--darker);
+            color: white;
+            padding: 80px 0 40px;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+
+        .footer-column h4 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            position: relative;
+            display: inline-block;
+            color: white;
+        }
+
+        .footer-column h4::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            right: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--gradient);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: #a0aec0;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 1.1rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+            padding-right: 10px;
+        }
+
+        .copyright {
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #718096;
+            font-size: 1.1rem;
+        }
+
+        /* انیمیشن‌ها */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* ریسپانسیو */
+        @media (max-width: 992px) {
+            .details-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .service-sidebar {
+                position: static;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .page-hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .service-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-content h2 {
+                font-size: 2.3rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* دکمه بازگشت به بالا */
+        .back-to-top {
+            position: fixed;
+            bottom: 40px;
+            left: 40px;
+            width: 60px;
+            height: 60px;
+            background: var(--gradient);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+            z-index: 999;
+            box-shadow: 0 5px 20px rgba(0, 102, 255, 0.5);
+        }
+
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 102, 255, 0.7);
+        }
+    </style>
+</head>
+<body>
+    <!-- هدر -->
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-city"></i>
+                <span>بیمه شهر</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html" class="nav-link">خانه</a>
+                <a href="services.html" class="nav-link">خدمات</a>
+                <a href="about.html" class="nav-link">درباره ما</a>
+                <a href="contact.html" class="nav-link">تماس با ما</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- بخش هیرو صفحه خدمات -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">خانه</a>
+                <span>/</span>
+                <a href="services.html">خدمات</a>
+                <span>/</span>
+                <span>بیمه خودروی شهری</span>
+            </div>
+            <h1>بیمه خودروی شهری</h1>
+            <p>پوشش کامل و تخصصی برای خودروهای شهری با شرایط ویژه رانندگی در محیط‌های پرترافیک و چالش‌برانگیز شهر</p>
+        </div>
+    </section>
+
+    <!-- بخش جزئیات خدمات -->
+    <section class="service-details">
+        <div class="container">
+            <div class="details-container">
+                <div class="service-content">
+                    <div class="service-header">
+                        <div class="service-icon-large">
+                            <i class="fas fa-car-crash"></i>
+                        </div>
+                        <div class="service-title">
+                            <h2>بیمه خودروی شهری</h2>
+                            <p>پوشش کامل برای زندگی شهری مدرن</p>
+                        </div>
+                    </div>
+
+                    <div class="service-description">
+                        <h3>معرفی خدمات</h3>
+                        <p>بیمه خودروی شهری، راه‌حلی تخصصی برای رانندگی در محیط‌های پرچالش شهری است. این بیمه‌نامه با در نظر گرفتن تمامی خطرات و چالش‌های رانندگی در شهر، پوشش کاملی را برای خودروی شما فراهم می‌کند.</p>
+                        <p>با توجه به ترافیک سنگین، احتمال بالای تصادفات جزئی، مشکلات پارکینگ و سایر چالش‌های رانندگی شهری، این بیمه‌نامه طراحی شده تا آرامش خاطر کامل را برای شما به ارمغان آورد.</p>
+                    </div>
+
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-car-battery"></i>
+                            </div>
+                            <h4>خدمات امداد در محل</h4>
+                            <p>ارائه خدمات امداد خودرو در کمتر از ۴۵ دقیقه در سراسر شهر با تیم‌های مجرب</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-user-shield"></i>
+                            </div>
+                            <h4>پوشش تصادفات درون شهری</h4>
+                            <p>پوشش کامل خسارات ناشی از تصادفات در محدوده شهری با کمترین فرانشیز</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-parking"></i>
+                            </div>
+                            <h4>خسارات پارکینگ</h4>
+                            <p>پوشش آسیب‌های ناشی از پارک در مکان‌های عمومی و خصوصی در سراسر شهر</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-traffic-light"></i>
+                            </div>
+                            <h4>پوشش ترافیک سنگین</h4>
+                            <p>پوشش ویژه برای خسارات ناشی از شرایط ترافیکی خاص و تصادفات زنجیره‌ای</p>
+                        </div>
+                    </div>
+
+                    <div class="service-description">
+                        <h3>مزایای بیمه خودروی شهری</h3>
+                        <p>این بیمه‌نامه با مزایای منحصر به فردی طراحی شده است که آن را از سایر بیمه‌های خودرو متمایز می‌کند:</p>
+                        
+                        <ul style="color: #cbd5e0; line-height: 1.8; margin-right: 20px; font-size: 1.1rem;">
+                            <li>پوشش کامل تصادفات درون شهری با فرانشیز کاهش‌یافته</li>
+                            <li>خدمات ۲۴ ساعته امداد و نجات در سراسر شهر</li>
+                            <li>پوشش سرقت تجهیزات و لوازم جانبی خودرو</li>
+                            <li>خدمات مشاوره رانندگی شهری و کاهش ریسک</li>
+                            <li>پرداخت سریع خسارت در کمتر از ۷۲ ساعت کاری</li>
+                            <li>پوشش آسیب‌های ناشی از پارک در مکان‌های عمومی</li>
+                            <li>خدمات کارشناسی رایگان در محل حادثه</li>
+                            <li>پوشش شیشه و آینه با شرایط ویژه</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="service-sidebar">
+                    <div class="sidebar-card contact-widget">
+                        <h3>دریافت مشاوره رایگان</h3>
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                <div class="contact-text">
+                                    <h4>شماره تماس</h4>
+                                    <p>پاسخگویی ۲۴/۷</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-clock"></i>
+                                <div class="contact-text">
+                                    <h4>ساعت کاری</h4>
+                                    <p>۱۰ صبح تا ۹ شب</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <div class="contact-text">
+                                    <h4>ایمیل</h4>
+                                    <p>info@bimehshahr.com</p>
+                                </div>
+                            </div>
+                            <a href="tel:09224015405" class="phone-highlight">
+                                <i class="fas fa-phone"></i>
+                                تماس: ۰۹۲۲۴۰۱۵۴۰۵
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-card">
+                        <h3>سایر خدمات</h3>
+                        <ul class="footer-links">
+                            <li><a href="services.html">بیمه آپارتمان‌نشینی</a></li>
+                            <li><a href="services.html">بیمه تجهیزات دیجیتال</a></li>
+                            <li><a href="services.html">بیمه مسئولیت شهری</a></li>
+                            <li><a href="services.html">بیمه سلامت شهری</a></li>
+                            <li><a href="services.html">بیمه سفرهای درون شهری</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- بخش سوالات متداول -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>سوالات متداول</h2>
+                <p>پاسخ به پرتکرارترین سوالات درباره بیمه خودروی شهری</p>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>پوشش این بیمه در چه محدوده‌ای فعال است؟</h4>
+                        <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>پوشش بیمه خودروی شهری در تمام محدوده‌های شهری و حومه شهر فعال است. این پوشش شامل خسارات ناشی از تصادفات، سرقت، آتش‌سوزی و حوادث طبیعی در محدوده شهری می‌شود.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>آیا برای تصادفات جزئی نیازی به پرداخت فرانشیز دارم؟</h4>
+                        <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>برای تصادفات جزئی با خسارت کمتر از ۵ میلیون تومان، فرانشیز دریافت نمی‌شود. این ویژگی منحصر به فرد بیمه خودروی شهری، آن را برای رانندگی در شرایط پرترافیک شهری ایده‌آل کرده است.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>خدمات امداد خودرو چگونه ارائه می‌شود؟</h4>
+                        <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>با اولین تماس، امداد خودروی ما در کمتر از ۴۵ دقیقه در محل حاضر می‌شود. خدمات شامل تعویض لاستیک، استارت زدن، ارائه بنزین و انتقال خودرو به نزدیک‌ترین تعمیرگاه می‌باشد.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>آیا برای خودروهای قدیمی هم می‌توانم این بیمه را خریداری کنم؟</h4>
+                        <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>بله، این بیمه برای کلیه خودروهای سواری با سن کمتر از ۱۵ سال قابل خریداری است. برای خودروهای با سن بالاتر، شرایط خاصی در نظر گرفته شده است.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA بخش -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>آماده دریافت بیمه خودروی شهری هستید؟</h2>
+                <p>همین حالا با کارشناسان ما تماس بگیرید و از مشاوره رایگان بهره‌مند شوید</p>
+                <div class="cta-buttons">
+                    <a href="tel:09224015405" class="cta-button primary">
+                        <i class="fas fa-phone"></i>
+                        تماس با کارشناس
+                    </a>
+                    <a href="contact.html" class="cta-button secondary">
+                        <i class="fas fa-comment-alt"></i>
+                        درخواست مشاوره
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- فوتر -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h4>بیمه شهر</h4>
+                    <p>ارائه‌دهنده خدمات بیمه‌ای مدرن و تخصصی برای زندگی شهری. با تمرکز بر نیازهای امروز شهرنشینان، آرامش و امنیت را به زندگی شما بازمی‌گردانیم.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>لینک‌های سریع</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">صفحه اصلی</a></li>
+                        <li><a href="services.html">خدمات ما</a></li>
+                        <li><a href="about.html">درباره ما</a></li>
+                        <li><a href="contact.html">تماس با ما</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>خدمات بیمه‌ای</h4>
+                    <ul class="footer-links">
+                        <li><a href="services.html">بیمه خودروی شهری</a></li>
+                        <li><a href="services.html">بیمه آپارتمان‌نشینی</a></li>
+                        <li><a href="services.html">بیمه تجهیزات دیجیتال</a></li>
+                        <li><a href="services.html">بیمه مسئولیت شهری</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© ۱۴۰۳ - کلیه حقوق مادی و معنوی این وبسایت متعلق به شرکت بیمه شهر می‌باشد</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- دکمه بازگشت به بالا -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+
+    <script>
+        // اسکروال انیمیشن
+        document.addEventListener('DOMContentLoaded', function() {
+            const backToTop = document.getElementById('backToTop');
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            // نمایش/پنهان کردن دکمه بازگشت به بالا
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 500) {
+                    backToTop.classList.add('active');
+                } else {
+                    backToTop.classList.remove('active');
+                }
+            });
+            
+            // کلیک روی دکمه بازگشت به بالا
+            backToTop.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // عملکرد سوالات متداول
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    item.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+</body>
+  </html>
